@@ -12,7 +12,7 @@ spring:
           lower-case-service-id: true
 
       routes:
-        # Маршрут для user-service
+        #Маршрут для user-service.
         - id: user-service-route
           uri: lb://USER-SERVICE
           predicates:
@@ -24,7 +24,7 @@ spring:
                 name: userServiceCB
                 fallbackUri: forward:/fallback/user-service
 
-        # Маршрут для notification-service
+        #Маршрут для notification-service.
         - id: notification-service-route
           uri: lb://NOTIFICATION-SERVICE
           predicates:
@@ -36,7 +36,7 @@ spring:
                 name: notificationServiceCB
                 fallbackUri: forward:/fallback/notification-service
 
-# Circuit Breaker конфигурация
+#Circuit Breaker конфигурация.
 resilience4j:
   circuitbreaker:
     configs:
@@ -53,7 +53,7 @@ resilience4j:
       notificationServiceCB:
         base-config: default
 
-# Eureka
+#Eureka.
 eureka:
   client:
     service-url:
@@ -61,7 +61,7 @@ eureka:
   instance:
     prefer-ip-address: true
 
-# Актуатор
+#Актуатор.
 management:
   endpoints:
     web:
@@ -73,7 +73,7 @@ management:
     gateway:
       enabled: true
 
-# Логирование
+#Логирование.
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
