@@ -1,14 +1,17 @@
 # Используем официальный образ OpenJDK 17
 FROM eclipse-temurin:17-jdk-alpine
 
-# Устанавливаем рабочую директорию
+# Создаем рабочую директорию
 WORKDIR /app
 
-# Копируем JAR-файл
-COPY target/*.jar app.jar
+# Указываем аргумент для имени JAR-файла
+ARG JAR_FILE=target/api-gateway*.jar
+
+# Копируем JAR-файл в контейнер
+COPY ${JAR_FILE} app.jar
 
 # Открываем порт
-EXPOSE ${SERVER_PORT}
+EXPOSE 8080
 
 # Запускаем приложение
 ENTRYPOINT ["java", "-jar", "app.jar"]
